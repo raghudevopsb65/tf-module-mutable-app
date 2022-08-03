@@ -42,7 +42,7 @@ resource "random_integer" "priority" {
 }
 
 resource "aws_lb_listener_rule" "backend" {
-  count        = var.LB_TYPE == "public" ? 0 : 1
+  count        = var.LB_TYPE == "private" ? 1 : 0
   listener_arn = var.PRIVATE_LISTENER_ARN
   priority     = random_integer.priority.result
 
