@@ -20,6 +20,13 @@ resource "aws_ec2_tag" "name-tag" {
   value       = local.TAG_PREFIX
 }
 
+resource "aws_ec2_tag" "monitor-tag" {
+  count       = var.INSTANCE_COUNT
+  resource_id = aws_spot_instance_request.instance.*.spot_instance_id[count.index]
+  key         = "Monitor"
+  value       = "yes"
+}
+
 resource "null_resource" "ansible" {
   triggers = {
     abc = timestamp()

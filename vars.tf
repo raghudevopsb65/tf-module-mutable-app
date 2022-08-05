@@ -22,3 +22,5 @@ variable "REDIS_ENDPOINT" {
 variable "MYSQL_ENDPOINT" {
   default = "null"
 }
+
+variable "PROMETHEUS_IP" {}
